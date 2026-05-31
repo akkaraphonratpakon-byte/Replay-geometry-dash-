@@ -1,0 +1,11 @@
+{
+    "geode": "4.0.0",
+    "gd": {
+        "android": "2.2074"
+    },
+    "id": "shoplmestopa.replaybot",
+    "name": "Replay Bot",
+    "version": "v1.0.0",
+    "developer": "shoplmestopa",
+    "description": "A simple replay bot for Geometry Dash"
+}
