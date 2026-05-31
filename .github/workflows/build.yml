@@ -1,0 +1,36 @@
+name: Build Mod
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        config:
+          - name: Android32
+            target: Android32
+          - name: Android64
+            target: Android64
+
+    name: ${{ matrix.config.name }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Geode CLI
+        uses: geode-sdk/action@main
+        with:
+          target: ${{ matrix.config.target }}
+
+      - name: Build
+        run: geode build
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.config.name }}
+          path: build/*.geode
